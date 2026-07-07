@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="./favicon.png">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Nexgig — Book. Play. Discover.</title>
@@ -50,6 +52,7 @@
     filter:blur(20px);pointer-events:none;z-index:0}
   .hero > *:not(.glow){position:relative;z-index:1}
   .hero h1{font-size:clamp(56px,12vw,132px);line-height:.92;letter-spacing:-.03em}
+  .hero-logo{width:120px;height:120px;border-radius:27px;margin:0 auto;display:block;box-shadow:0 12px 40px rgba(226,103,74,.35)}
   .hero h1 .dot{color:var(--coral)}
   .tag{margin-top:22px;font-size:clamp(18px,2.4vw,24px);color:var(--cream)}
   .slogan{margin-top:10px;font-size:15px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600}
@@ -97,7 +100,7 @@
 
   <header class="hero">
     <div class="glow"></div>
-    <h1 class="wm">gig<span class="dot">.</span></h1>
+    <img class="hero-logo" src="./hero-icon.png" alt="Nexgig" width="132" height="132" />
     <p class="tag">Where venues and artists meet.</p>
     <p class="slogan">Book. Play. Discover.</p>
     <p class="sub">Nexgig connects venue managers with artists for a smooth booking experience — manage lineups, send requests, track gigs, create invoices, and get discovered.</p>
