@@ -226,7 +226,7 @@
       <a class="navlink" href="./support.html">Support</a>
       <!-- links collapse on mobile; Support + legal remain in the footer -->
 
-      <button class="btn btn-primary btn-sm" type="button" data-demo>Request a demo</button>
+      <button class="btn btn-primary btn-sm" type="button" data-demo>Request access</button>
     </div>
   </nav>
 
@@ -236,11 +236,11 @@
     <h1>Your artists. Your bookings. All in one place.</h1>
     <p class="sub">Organise schedules, confirm gigs, track fees, and manage invoices. Nexgig brings venue managers and performing artists together around one clear booking workflow.</p>
     <div class="cta">
-      <button class="btn btn-primary" type="button" data-demo>Request a demo</button>
+      <button class="btn btn-primary" type="button" data-demo>Request access</button>
       <a class="btn btn-ghost" href="https://apps.apple.com/ae/app/nexgig/id6784020757">Download for iPhone</a>
     </div>
     <p class="helper">Managing a venue? We’ll walk you through Nexgig and help you get started.</p>
-    <p class="fallback">Prefer email? Write to <a href="mailto:admin@nexgigapp.com?subject=Nexgig%20demo%20request">admin@nexgigapp.com</a>.</p>
+    <p class="fallback">Prefer email? Write to <a href="mailto:admin@nexgigapp.com?subject=Nexgig%20access%20request">admin@nexgigapp.com</a>.</p>
   </header>
 
   <!-- Product showcase -->
@@ -284,7 +284,7 @@
             <li>Track gig costs and follow up on invoices.</li>
           </ul>
           <div class="cardcta">
-            <button class="btn btn-primary" type="button" data-demo>Request a demo</button>
+            <button class="btn btn-primary" type="button" data-demo>Request access</button>
           </div>
         </div>
         <div class="card" id="artists">
@@ -351,8 +351,8 @@
   <section class="block closing">
     <div class="wrap">
       <h2>Let’s organise your next month of gigs.</h2>
-      <p class="lead">We’re onboarding venue managers and shaping Nexgig with their feedback. Request a demo to see how it could fit your venues and roster.</p>
-      <button class="btn btn-primary" type="button" data-demo>Request a demo</button>
+      <p class="lead">We’re onboarding venue managers and shaping Nexgig with their feedback. Request access to see how it could fit your venues and roster.</p>
+      <button class="btn btn-primary" type="button" data-demo>Request access</button>
     </div>
   </section>
 
@@ -376,8 +376,8 @@
       <button class="modal-close" type="button" data-demo-close aria-label="Close">&times;</button>
 
       <div id="demoBody">
-        <h2 class="modal-title" id="demoTitle">Request a demo</h2>
-        <p class="modal-intro" id="demoIntro">Tell us a little about yourself and the venues you manage. We’ll get in touch to walk you through Nexgig.</p>
+        <h2 class="modal-title" id="demoTitle">Request access</h2>
+        <p class="modal-intro" id="demoIntro">Tell us about yourself and the venues you manage. We’ll review your request and get in touch to help you get started.</p>
         <form id="demoForm" novalidate>
           <div class="fld">
             <label for="d-name">Name <span class="req" aria-hidden="true">*</span></label>
@@ -401,9 +401,9 @@
           <!-- honeypot: hidden from people; a filled value flags a bot -->
           <div class="hp" aria-hidden="true"><label>Website<input id="d-website" name="website" type="text" tabindex="-1" autocomplete="off" /></label></div>
           <p class="form-error" id="demoFormError" role="alert" hidden></p>
-          <p class="form-note" style="font-size:13px;color:var(--muted);line-height:1.5;margin:2px 0 14px;">We’ll use your details to respond to your enquiry and arrange a demo. This won’t create an account or subscribe you to marketing emails. See our <a href="https://nexgig.github.io/legal/privacy-policy.html" target="_blank" rel="noopener" style="color:var(--coral);text-decoration:underline;">Privacy Policy</a>.</p>
+          <p class="form-note" style="font-size:13px;color:var(--muted);line-height:1.5;margin:2px 0 14px;">We’ll use your details to review your request and contact you about onboarding. Submitting this form doesn’t create an account or guarantee access, and won’t subscribe you to marketing emails. See our <a href="https://nexgig.github.io/legal/privacy-policy.html" target="_blank" rel="noopener" style="color:var(--coral);text-decoration:underline;">Privacy Policy</a>.</p>
           <button class="btn btn-primary" type="submit" id="demoSubmit">Send request</button>
-          <p class="modal-fallback">Prefer email? <a href="mailto:admin@nexgigapp.com?subject=Nexgig%20demo%20request">admin@nexgigapp.com</a></p>
+          <p class="modal-fallback">Prefer email? <a href="mailto:admin@nexgigapp.com?subject=Nexgig%20access%20request">admin@nexgigapp.com</a></p>
         </form>
       </div>
 
@@ -535,7 +535,7 @@
         if (r.ok && r.data && r.data.success) {
           sending = false; submitBtn.disabled = false; submitBtn.textContent = 'Send request';
           var first = name.split(' ')[0] || name;
-          successMsg.innerHTML = 'Thanks, ' + esc(first) + '. We’ll contact you at <strong style="color:var(--cream)">' + esc(email) + '</strong> to arrange a demo.';
+          successMsg.innerHTML = 'Thanks for your interest in Nexgig. We’ll review your details and contact you about the next steps.';
           requestId = null;                          // next enquiry gets a fresh id
           bodyView.hidden = true; successView.hidden = false;
           var done = successView.querySelector('.btn'); if (done) done.focus();
