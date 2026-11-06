@@ -50,10 +50,11 @@
   a{color:inherit}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
-  /* wordmark — approved: neutral "Nex", coral "gig", no trailing full stop */
-  .wm{font-family:'Clash Display',-apple-system,sans-serif;font-weight:700;letter-spacing:-.01em}
-  .logo{color:var(--wm-neutral);text-decoration:none}
-  .logo .g{color:var(--coral)}
+  /* wordmark — approved refined artwork (6 Nov 2026): white "Nex", coral #F15A3A "gig", dark-background variant.
+     Brand/Assets/Brand Assets/2026-11-06 Refined Identity/…/03 Logos/nexgig-wordmark-dark.svg, byte-identical copy.
+     Height-driven, width auto so the 1383 × 425 aspect ratio is preserved; never below the 20px minimum. */
+  .logo{display:inline-flex;align-items:center;text-decoration:none;line-height:0}
+  .logo img{display:block;height:28px;width:auto}
 
   /* buttons */
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
@@ -153,7 +154,7 @@
   /* footer */
   footer{border-top:1px solid var(--line);padding:46px 24px 60px;margin-top:20px}
   .foot{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
-  .foot .brand{font-size:22px}
+  .foot .brand img{height:26px}
   .foot .links{display:flex;gap:24px;flex-wrap:wrap}
   .foot a{color:var(--muted);text-decoration:none;font-size:14.5px;transition:color .2s}
   .foot a:hover{color:var(--cream)}
@@ -220,7 +221,7 @@
 </head>
 <body>
   <nav>
-    <a class="brand wm logo" href="./index.html" aria-label="Nexgig home">Nex<span class="g">gig</span></a>
+    <a class="brand logo" href="./index.html" aria-label="Nexgig home"><img src="./nexgig-wordmark.svg" alt="Nexgig" width="91" height="28" /></a>
     <div class="navlinks">
       <a class="navlink" href="#managers">For managers</a>
       <a class="navlink" href="#artists">For artists</a>
@@ -359,7 +360,7 @@
 
   <footer>
     <div class="foot">
-      <a class="brand wm logo" href="./index.html" aria-label="Nexgig home">Nex<span class="g">gig</span></a>
+      <a class="brand logo" href="./index.html" aria-label="Nexgig home"><img src="./nexgig-wordmark.svg" alt="Nexgig" width="91" height="28" /></a>
       <div class="links">
         <a href="https://nexgig.github.io/legal/privacy-policy.html">Privacy Policy</a>
         <a href="https://nexgig.github.io/legal/terms-of-service.html">Terms of Service</a>
