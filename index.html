@@ -122,15 +122,12 @@
   .block .lead{color:var(--prose);max-width:620px;margin:12px auto 0;font-size:16.5px}
   .center .lead{margin-inline:auto}
 
-  /* product showcase */
-  .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px}
-  .shot{display:flex;flex-direction:column;align-items:center;text-align:center}
-  .phone{width:100%;max-width:264px;aspect-ratio:560/1212;overflow:hidden;
-    border-radius:30px;border:1px solid var(--border);background:var(--surface);
-    box-shadow:0 24px 60px var(--shadow);}
-  .phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-  .shot h3{font-size:18px;font-weight:600;margin:22px 0 6px;letter-spacing:-.005em}
-  .shot p{color:var(--prose);font-size:14.5px;max-width:30ch}
+  /* product showcase — the five Apple App Store images, shown as-is (fixed artwork; same in both themes).
+     Height follows width, so the full 1206 × 2622 artwork is always visible. The 3.2% / 1.47% frame radius matches the
+     rounded corners already baked into images 4–5 (≈34px at source size); on 1–3 it only rounds plain background. */
+  .shots{display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-top:48px}
+  .shot{flex:0 1 300px;margin:0;min-width:0}
+  .shot img{display:block;width:100%;height:auto;border-radius:3.2% / 1.47%;box-shadow:0 18px 44px var(--shadow)}
 
   /* audience cards */
   /* Two cards share one grid so their rows (label · heading · intro · bullets · button) line up
@@ -220,7 +217,8 @@
   }
   @media(max-width:720px){
     .navlinks a.navlink{display:none}
-    .shots{grid-template-columns:1fr;gap:34px;max-width:320px;margin-inline:auto}
+    .shots{gap:28px}
+    .shot{flex-basis:340px}
     .split{display:flex;flex-direction:column;gap:22px}
     .card{display:flex;flex-direction:column}
     .why{padding:38px 26px}
@@ -266,21 +264,11 @@
       <h2>Know what’s booked. See what needs attention.</h2>
       <p class="lead">A look inside Nexgig.</p>
       <div class="shots">
-        <div class="shot">
-          <div class="phone"><img src="./shot-schedule.png" alt="Nexgig home screen: a venue’s week shown as booked, pending and needs-artist nights, above upcoming bookings filtered by Booked, Pending or All" width="560" height="1212" loading="lazy" /></div>
-          <h3>Your schedule, together.</h3>
-          <p>Confirmed bookings, pending requests, and the sets that still need an artist — right on your home screen.</p>
-        </div>
-        <div class="shot">
-          <div class="phone"><img src="./shot-budget.png" alt="Nexgig schedule screen: a month calendar of booked and pending nights, with a monthly budget summary beneath — total spent, amount left of the venue’s budget, and cost per artist" width="560" height="1212" loading="lazy" /></div>
-          <h3>Your budget, in view.</h3>
-          <p>Track agreed gig costs against your venue’s monthly budget.</p>
-        </div>
-        <div class="shot">
-          <div class="phone"><img src="./shot-invoices.png" alt="Nexgig billing screen: total invoiced this month with an Export button, and each artist’s amount — up to date, or still owing with a Request button" width="560" height="1212" loading="lazy" /></div>
-          <h3>Your invoices, organised.</h3>
-          <p>See which invoices have arrived and which artists still need to send theirs.</p>
-        </div>
+        <figure class="shot"><img src="./assets/store/iphone-1.jpg" width="1206" height="2622" loading="lazy" decoding="async" alt="Your bookings. All in one place. Manage your bookings, track your history and send invoices with Nexgig. Shows the artist Home screen with the week strip and next booking." /></figure>
+        <figure class="shot"><img src="./assets/store/iphone-2.jpg" width="1206" height="2622" loading="lazy" decoding="async" alt="Your artist profile. Your career info and recently played venues. Shows two artist profile screens with Listen and Instagram links, recently played venues, About and Genres." /></figure>
+        <figure class="shot"><img src="./assets/store/iphone-3.jpg" width="1206" height="2622" loading="lazy" decoding="async" alt="Your booking details, together. See the venue, date, time and fee at a glance. Shows the Booking Details screen for Palm House with date, time, fee and the guest list." /></figure>
+        <figure class="shot"><img src="./assets/store/iphone-4.jpg" width="1206" height="2622" loading="lazy" decoding="async" alt="Add your own bookings. From rooftop gigs to weddings, keep the bookings you arrange yourself in your schedule. Shows the Add a booking screen." /></figure>
+        <figure class="shot"><img src="./assets/store/iphone-5.jpg" width="1206" height="2622" loading="lazy" decoding="async" alt="Track your booking history. Look back at where you played and explore your booking insights. Shows a History report listing past bookings and fees." /></figure>
       </div>
     </div>
   </section>
