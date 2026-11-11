@@ -62,7 +62,8 @@
   .intro{padding:40px 0 8px}
   .eyebrow{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:18px}
   h1{font-weight:700;font-size:clamp(36px,6vw,56px);line-height:1.06;letter-spacing:-.02em;margin-bottom:22px}
-  .opener{font-size:clamp(20px,2.6vw,25px);line-height:1.38;font-weight:600;margin-bottom:16px;text-wrap:pretty;color:var(--muted)}
+  .opener{font-size:clamp(20px,2.6vw,25px);line-height:1.38;font-weight:600;margin-bottom:16px;text-wrap:pretty;color:var(--text)}
+  .intro h1, .intro .opener{text-align:center}   /* welcome heading + opener centred; eyebrow unchanged */
   .intro p.body{font-size:18px;color:var(--prose)}
 
   h2{font-weight:700;font-size:clamp(28px,4vw,38px);line-height:1.1;letter-spacing:-.015em;text-wrap:balance}
@@ -78,7 +79,8 @@
   ul.points li{position:relative;padding-left:24px;margin-bottom:12px;font-size:18px;color:var(--prose)}
   ul.points li::before{content:'';position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--coral)}
   .start ul.points{margin-top:14px}
-  ul.points li b{color:var(--muted)}   /* bullet openings stay bold, in the theme secondary gray */
+  .start ul.points li b{color:var(--text)}   /* Getting started: bold tab labels in main text colour */
+  ul.points li .lead{color:var(--muted)}      /* other bullet openings: regular weight, theme secondary gray */
 
   /* guide sections */
   section.part{padding:64px 0 8px;scroll-margin-top:12px}
@@ -156,7 +158,7 @@
   </nav>
 
   <main>
-    <!-- Welcome · Built on trust · Getting started -->
+    <!-- Welcome · Verification · Getting started -->
     <div class="wrap narrow">
       <header class="intro">
         <p class="eyebrow">Artist quick start guide</p>
@@ -165,14 +167,14 @@
       </header>
 
       <section class="trust" aria-labelledby="trust">
-        <h2 id="trust">Built on trust</h2>
-        <p class="body">We check that venues are real and that the people managing them are authorised to do so.</p>
+        <h2 id="trust">Verification</h2>
+        <p class="body">We verify each venue is real and that its managers are authorised, so you can accept bookings with confidence.</p>
         <p class="body">Your booking details, including fees and invoices, are private. Nexgig and your venue are committed under a signed agreement to protecting this information. Access is limited, and database access through our verified administrative tools is logged.</p>
       </section>
 
       <section class="start" aria-labelledby="start">
         <h2 id="start">Getting started</h2>
-        <p class="body">Your venue invites you to Nexgig. Sign up, then use these screens to manage your bookings:</p>
+        <p class="body">After you sign up, here’s what you’ll find in each tab:</p>
         <ul class="points">
           <li><b>Home &amp; Notifications:</b> see upcoming bookings, respond to requests and get updates.</li>
           <li><b>Schedule &amp; Calendar:</b> organise bookings and availability.</li>
@@ -195,9 +197,9 @@
             <div class="notes a-na">
               <h3 class="notes-label" id="t-home">Home</h3>
               <ul class="points" aria-labelledby="t-home">
-                <li><b>The week strip</b> shows your weekly schedule. Tap a day to see its bookings.</li>
-                <li><b>Next up</b> lists your upcoming bookings in date order.</li>
-                <li><b>Gig Log</b> keeps your booking history, including venue bookings and bookings you add yourself.</li>
+                <li><span class="lead">The week strip</span> shows your weekly schedule. Tap a day to see its bookings.</li>
+                <li><span class="lead">Next up</span> lists your upcoming bookings in date order.</li>
+                <li><span class="lead">Gig Log</span> keeps your booking history, including venue bookings and bookings you add yourself.</li>
               </ul>
             </div>
           </div>
@@ -207,8 +209,8 @@
               <div class="notes a-nb">
                 <h3 class="notes-label" id="t-needs">Needs Attention</h3>
                 <ul class="points" aria-labelledby="t-needs">
-                  <li><b>Needs Attention</b> shows new booking requests and bookings cancelled by venues.</li>
-                  <li><b>Tap a request</b> to view its details.</li>
+                  <li><span class="lead">Needs Attention</span> shows new booking requests and booking updates.</li>
+                  <li><span class="lead">Tap a request</span> to view its details.</li>
                 </ul>
               </div>
             </div>
@@ -217,8 +219,8 @@
               <div class="notes a-nc">
                 <h3 class="notes-label" id="t-notif">Notifications</h3>
                 <ul class="points" aria-labelledby="t-notif">
-                  <li><b>Turn on notifications</b> for booking requests, booking changes and invoice reminders.</li>
-                  <li><b>We’re always improving</b> the design and adding features. Tap Update whenever it appears to get the latest improvements.</li>
+                  <li><span class="lead">Turn on notifications</span> for booking requests, booking changes and invoice reminders.</li>
+                  <li><span class="lead">We’re always improving</span> the design and adding features. Tap Update whenever it appears to get the latest improvements.</li>
                 </ul>
               </div>
             </div>
@@ -240,9 +242,9 @@
             <div class="notes a-na">
               <h3 class="notes-label" id="t-schedule">Schedule</h3>
               <ul class="points" aria-labelledby="t-schedule">
-                <li><b>This is your monthly calendar.</b></li>
-                <li><b>Tap + to add your own bookings</b>, including private events or bookings at venues outside Nexgig.</li>
-                <li><b>This records the booking</b> and shows managers when you’re unavailable. Your private booking details stay private.</li>
+                <li><span class="lead">This is your monthly calendar.</span></li>
+                <li><span class="lead">Tap + to add your own bookings</span>, including private events or bookings at venues outside Nexgig.</li>
+                <li><span class="lead">This records the booking</span> and shows managers when you’re unavailable. Your private booking details stay private.</li>
               </ul>
             </div>
           </div>
@@ -251,9 +253,9 @@
             <div class="notes a-nb">
               <h3 class="notes-label" id="t-calendar">Connect your calendar</h3>
               <ul class="points" aria-labelledby="t-calendar">
-                <li><b>Phone Calendar works one way:</b> Send your bookings from Nexgig to your phone’s calendar.</li>
-                <li><b>Google Calendar works two ways:</b> Send your bookings from Nexgig to Google Calendar and sync your Google busy times into Nexgig so venues know your availability.</li>
-                <li><b>Venue managers</b> see only the imported unavailable times, never the details of your commitments.</li>
+                <li><span class="lead">Phone Calendar works one way:</span><br />Send your bookings from Nexgig to your phone’s calendar.</li>
+                <li><span class="lead">Google Calendar works two ways:</span><br />Send your bookings from Nexgig to Google Calendar and sync your Google busy times into Nexgig so venues know your availability.</li>
+                <li><span class="lead">Venue managers</span> see only the imported unavailable times, never the details of your commitments.</li>
               </ul>
             </div>
           </div>
@@ -274,7 +276,7 @@
             <div class="notes a-na">
               <h3 class="notes-label" id="t-billing">Billing</h3>
               <ul class="points" aria-labelledby="t-billing">
-                <li><b>Each venue has its own billing cycle.</b> When it ends, you’ll see how many bookings are ready to invoice. Tap the venue to create an invoice.</li>
+                <li><span class="lead">Each venue has its own billing cycle.</span> When it ends, you’ll see how many bookings are ready to invoice. Tap the venue to create an invoice.</li>
               </ul>
             </div>
           </div>
@@ -283,8 +285,8 @@
             <div class="notes a-nb">
               <h3 class="notes-label" id="t-invoice">Create invoice</h3>
               <ul class="points" aria-labelledby="t-invoice">
-                <li><b>Tap Preview invoice</b> to generate an invoice in Nexgig and review it.</li>
-                <li><b>Or choose Upload my own</b> to use your own tax invoice.</li>
+                <li><span class="lead">Tap Preview invoice</span> to generate an invoice in Nexgig and review it.</li>
+                <li><span class="lead">Or choose Upload my own</span> to use your own tax invoice.</li>
               </ul>
             </div>
           </div>
@@ -304,14 +306,14 @@
           <div class="feature">
             <h3>Your profile</h3>
             <ul class="points">
-              <li><b>Keep your artist details</b>, bio and links up to date.</li>
-              <li><b>Recently played</b> shows the last five venues you played at.</li>
-              <li><b>Tap the Network button</b> to see the venues you’re connected to.</li>
+              <li><span class="lead">Keep your artist details</span>, bio and links up to date.</li>
+              <li><span class="lead">Recently played</span> shows the last five venues you played at.</li>
+              <li><span class="lead">Tap the Network button</span> to see the venues you’re connected to.</li>
             </ul>
           </div>
           <div class="feature">
             <h3>Need help?</h3>
-            <p class="body">Tap the <b>floating message button</b> on your Artist Profile to send questions, report a problem or suggest a feature.</p>
+            <p class="body">Tap the floating message button on your Artist Profile to send questions, report a problem or suggest a feature.</p>
           </div>
         </div>
       </div>
