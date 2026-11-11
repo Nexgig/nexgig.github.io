@@ -61,7 +61,7 @@
   /* intro */
   .intro{padding:40px 0 0}
   .eyebrow{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:18px}
-  h1{font-weight:700;font-size:clamp(24px,3vw,30px);line-height:1.1;letter-spacing:-.015em;margin-bottom:22px}   /* Welcome: same type as Verification / Getting started */
+  h1{font-weight:700;font-size:clamp(24px,3vw,30px);line-height:1.1;letter-spacing:-.015em;margin-bottom:14px}   /* Welcome: same type and title-to-body gap as Verification / Getting started */
   .opener{margin:0;text-wrap:pretty}   /* intro paragraph uses the regular body style (p.body); 44px to Verification comes from .trust padding */
   .intro p.body{font-size:18px;color:var(--prose)}
 
@@ -82,7 +82,7 @@
   ul.points li .lead{color:var(--muted)}      /* other bullet openings: regular weight, theme secondary gray */
 
   /* guide sections */
-  section.part{padding:64px 0 8px;scroll-margin-top:12px}
+  section.part{padding:48px 0 8px;scroll-margin-top:12px}
   /* section separator strip: approved surface + border colours, content width, before each of the four guide sections */
   hr.divider{border:0;height:10px;margin:0 0 24px;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);border-radius:5px}
   section.part > .wrap > header{margin-bottom:18px}
@@ -106,7 +106,8 @@
   figure.detail{max-width:440px}
   figure.detail img{border-radius:3.87% / 8.19%}            /* approved focused Needs Attention crop */
 
-  .profile-shot{margin-bottom:48px}
+  .profile-shot{margin-bottom:32px}   /* screenshot -> first profile bullet matches gallery -> notes (28px at <=860px) */
+  #profile .cols ul.points{margin-top:0}
   /* "Artist Profile" is the Profile section heading (h2) but keeps the screenshot-title look */
   .profile-shot .shot-title{font-size:clamp(22px,2.6vw,26px);line-height:1.2;letter-spacing:-.01em;margin-bottom:18px;text-align:center}
 
@@ -131,6 +132,7 @@
     .gallery-stack{gap:16px}
     .gallery figure.screen{max-width:none;margin:0}
     ul.section-notes{margin-top:28px}
+    .profile-shot{margin-bottom:28px}
   }
   @media(max-width:420px){
     p.body, ul.points li, .intro p.body, .sub{font-size:17px}
@@ -236,8 +238,7 @@
         </div>
         <ul class="points section-notes" aria-labelledby="billing-title">
           <li><span class="lead">Each venue has its own billing cycle.</span> When it ends, you’ll see how many bookings are ready to invoice. Tap the venue to create an invoice.</li>
-          <li><span class="lead">Tap Preview invoice</span> to generate an invoice in Nexgig and review it.</li>
-          <li><span class="lead">Or choose Upload my own</span> to use your own tax invoice.</li>
+          <li><span class="lead">Tap Preview invoice</span> to generate an invoice in Nexgig and review it, <span class="lead">or choose Upload my own</span> to use your own tax invoice.</li>
         </ul>
       </div>
     </section>
