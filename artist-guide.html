@@ -63,7 +63,9 @@
   .eyebrow{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:18px}
   h1{font-weight:700;font-size:clamp(36px,6vw,56px);line-height:1.06;letter-spacing:-.02em;margin-bottom:22px}
   .opener{font-size:clamp(20px,2.6vw,25px);line-height:1.38;font-weight:600;margin-bottom:16px;text-wrap:pretty;color:var(--text)}
-  .intro h1, .intro .opener{text-align:center}   /* welcome heading + opener centred; eyebrow unchanged */
+  .intro h1{text-align:center}   /* welcome heading centred; opener + eyebrow keep body (left) alignment */
+  /* brand coral for the three introductory headings only (Welcome, Verification, Getting started) */
+  .intro h1, .trust h2, .start h2{color:var(--coral)}
   .intro p.body{font-size:18px;color:var(--prose)}
 
   h2{font-weight:700;font-size:clamp(28px,4vw,38px);line-height:1.1;letter-spacing:-.015em;text-wrap:balance}
@@ -87,6 +89,7 @@
   /* section separator strip: approved surface + border colours, content width, before each of the four guide sections */
   hr.divider{border:0;height:10px;margin:0 0 44px;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);border-radius:5px}
   section.part > .wrap > header{margin-bottom:36px}
+  section.part > .wrap > header h2{text-align:center}   /* Home, Schedule, Billing & invoices centred (Artist Profile already centred) */
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:56px 48px;align-items:start}
   .stack{display:flex;flex-direction:column;gap:56px}
   .feature{min-width:0}
@@ -169,7 +172,7 @@
       <section class="trust" aria-labelledby="trust">
         <h2 id="trust">Verification</h2>
         <p class="body">We verify each venue is real and that its managers are authorised, so you can accept bookings with confidence.</p>
-        <p class="body">Your booking details, including fees and invoices, are private. Nexgig and your venue are committed under a signed agreement to protecting this information. Access is limited, and database access through our verified administrative tools is logged.</p>
+        <p class="body">Your booking details, including fees and invoices, are private. Nexgig and participating venues are committed under a signed agreement to protecting this information. Access is limited, and database access through our verified administrative tools is logged.</p>
       </section>
 
       <section class="start" aria-labelledby="start">
