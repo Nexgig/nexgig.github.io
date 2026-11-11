@@ -80,12 +80,15 @@
   .start ul.points{margin-top:14px}
 
   /* guide sections */
-  section.part{padding:72px 0 8px;scroll-margin-top:12px}
+  section.part{padding:64px 0 8px;scroll-margin-top:12px}
+  /* section separator strip: approved surface + border colours, content width, before each of the four guide sections */
+  hr.divider{border:0;height:10px;margin:0 0 44px;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);border-radius:5px}
   section.part > .wrap > header{margin-bottom:36px}
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:56px 48px;align-items:start}
   .stack{display:flex;flex-direction:column;gap:56px}
   .feature{min-width:0}
   .feature ul.points{margin-top:24px}
+  .notes-label{display:none}
 
   /* screenshots: full screens keep their aspect ratio; rounded iPhone-style corners scale with the image */
   figure.screen{margin:0 auto;width:100%}
@@ -116,6 +119,23 @@
 
   @media(max-width:860px){
     .cols{grid-template-columns:1fr;gap:56px}
+    /* Phones/tablets: related SCREENSHOTS stay paired (as in the portrait PDF); each screen's bullets follow
+       below the pair as full-width labelled blocks at the normal reading size. Desktop layout is unchanged. */
+    .pair{grid-template-columns:1fr 1fr;column-gap:16px;row-gap:0;align-items:start}
+    .pair .feature, .pair .stack{display:contents}
+    .pair h3{font-size:18px;line-height:1.25;margin-bottom:10px}
+    .pair figure.screen{max-width:none;margin:0}
+    .pair-two{grid-template-areas:"ha hb" "sa sb" "na na" "nb nb"}
+    /* Home left; Needs Attention above Notifications on the right. Spare height from the tall Home screen
+       goes to the Notifications row (1fr), keeping the right-hand stack together. */
+    .pair-home{grid-template-areas:"ha hb" "sa sb" "sa hc" "sa sc" "na na" "nb nb" "nc nc";
+      grid-template-rows:auto auto auto 1fr auto auto auto}
+    .pair .a-ha{grid-area:ha} .pair .a-hb{grid-area:hb} .pair .a-hc{grid-area:hc;margin-top:20px}
+    .pair .a-sa{grid-area:sa} .pair .a-sb{grid-area:sb} .pair .a-sc{grid-area:sc}
+    .pair .a-na{grid-area:na} .pair .a-nb{grid-area:nb} .pair .a-nc{grid-area:nc}
+    .pair .notes{margin-top:28px}
+    .pair .notes-label{display:block;font-weight:700;font-size:18px;margin-bottom:8px;color:var(--text)}
+    .pair .notes ul.points{margin-top:0}
   }
   @media(max-width:420px){
     p.body, ul.points li, .intro p.body, .sub{font-size:17px}
@@ -164,36 +184,46 @@
     <!-- Home · Needs Attention · Notifications -->
     <section class="part" id="home" aria-labelledby="home-title">
       <div class="wrap">
+        <hr class="divider" />
         <header>
           <h2 id="home-title">Home, requests &amp; updates</h2>
           <p class="sub">Your bookings, requests and updates in one place.</p>
         </header>
-        <div class="cols">
+        <div class="cols pair pair-home">
           <div class="feature">
-            <h3>Home</h3>
-            <figure class="screen phone"><picture><source srcset="./assets/guide/home-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/home-light.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Nexgig artist Home screen: the week strip for Monday 9 to Sunday 15, a Gig log link, the Next up booking at Palm House on Friday 13 November, then upcoming bookings at Rooftop Bar and a Corporate Dinner." /></picture></figure>
-            <ul class="points">
-              <li><b>The week strip</b> shows your weekly schedule. Tap a day to see its bookings.</li>
-              <li><b>Next up</b> lists your upcoming bookings in date order.</li>
-              <li><b>Gig Log</b> keeps your booking history, including venue bookings and bookings you add yourself.</li>
-            </ul>
+            <h3 id="t-home" class="a-ha">Home</h3>
+            <figure class="a-sa screen phone"><picture><source srcset="./assets/guide/home-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/home-light.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Nexgig artist Home screen: the week strip for Monday 9 to Sunday 15, a Gig log link, the Next up booking at Palm House on Friday 13 November, then upcoming bookings at Rooftop Bar and a Corporate Dinner." /></picture></figure>
+            <div class="notes a-na">
+              <p class="notes-label" aria-hidden="true">Home</p>
+              <ul class="points" aria-labelledby="t-home">
+                <li><b>The week strip</b> shows your weekly schedule. Tap a day to see its bookings.</li>
+                <li><b>Next up</b> lists your upcoming bookings in date order.</li>
+                <li><b>Gig Log</b> keeps your booking history, including venue bookings and bookings you add yourself.</li>
+              </ul>
+            </div>
           </div>
           <div class="stack">
             <div class="feature">
-              <h3>Needs Attention</h3>
-              <figure class="screen detail"><picture><source srcset="./assets/guide/needs-attention-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/needs-attention-light.jpg" width="780" height="369" loading="lazy" decoding="async" alt="Close-up of the Needs Attention card on Home: a booking request from Palm House for Saturday 28 November, AED 1,500 at 1:00 PM, with Decline and Accept buttons." /></picture></figure>
-              <ul class="points">
-                <li><b>Needs Attention</b> shows new booking requests and bookings cancelled by venues.</li>
-                <li><b>Tap a request</b> to view its details.</li>
-              </ul>
+              <h3 id="t-needs" class="a-hb">Needs Attention</h3>
+              <figure class="a-sb screen detail"><picture><source srcset="./assets/guide/needs-attention-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/needs-attention-light.jpg" width="780" height="369" loading="lazy" decoding="async" alt="Close-up of the Needs Attention card on Home: a booking request from Palm House for Saturday 28 November, AED 1,500 at 1:00 PM, with Decline and Accept buttons." /></picture></figure>
+              <div class="notes a-nb">
+                <p class="notes-label" aria-hidden="true">Needs Attention</p>
+                <ul class="points" aria-labelledby="t-needs">
+                  <li><b>Needs Attention</b> shows new booking requests and bookings cancelled by venues.</li>
+                  <li><b>Tap a request</b> to view its details.</li>
+                </ul>
+              </div>
             </div>
             <div class="feature">
-              <h3>Notifications</h3>
-              <figure class="screen short"><picture><source srcset="./assets/guide/notifications-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/notifications-light.jpg" width="780" height="842" loading="lazy" decoding="async" alt="Nexgig Notifications screen: an Update available banner with an Update button, followed by a new booking request, a guest list update and a time change." /></picture></figure>
-              <ul class="points">
-                <li><b>Turn on notifications</b> for booking requests, booking changes and invoice reminders.</li>
-                <li><b>We’re always improving</b> the design and adding features. Tap Update whenever it appears to get the latest improvements.</li>
-              </ul>
+              <h3 id="t-notif" class="a-hc">Notifications</h3>
+              <figure class="a-sc screen short"><picture><source srcset="./assets/guide/notifications-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/notifications-light.jpg" width="780" height="842" loading="lazy" decoding="async" alt="Nexgig Notifications screen: an Update available banner with an Update button, followed by a new booking request, a guest list update and a time change." /></picture></figure>
+              <div class="notes a-nc">
+                <p class="notes-label" aria-hidden="true">Notifications</p>
+                <ul class="points" aria-labelledby="t-notif">
+                  <li><b>Turn on notifications</b> for booking requests, booking changes and invoice reminders.</li>
+                  <li><b>We’re always improving</b> the design and adding features. Tap Update whenever it appears to get the latest improvements.</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -203,28 +233,35 @@
     <!-- Schedule · Calendar -->
     <section class="part" id="schedule" aria-labelledby="schedule-title">
       <div class="wrap">
+        <hr class="divider" />
         <header>
           <h2 id="schedule-title">Schedule &amp; calendar</h2>
           <p class="sub">Keep your bookings and availability in one place.</p>
         </header>
-        <div class="cols">
+        <div class="cols pair pair-two">
           <div class="feature">
-            <h3>Schedule</h3>
-            <figure class="screen phone"><picture><source srcset="./assets/guide/schedule-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/schedule-light.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Nexgig Schedule screen: the November 2026 month calendar with a + button, booked days marked, and a Corporate Dinner booking listed for the selected day." /></picture></figure>
-            <ul class="points">
-              <li><b>This is your monthly calendar.</b></li>
-              <li><b>Tap + to add your own bookings</b>, including private events or bookings at venues outside Nexgig.</li>
-              <li><b>This records the booking</b> and shows managers when you’re unavailable. Your private booking details stay private.</li>
-            </ul>
+            <h3 id="t-schedule" class="a-ha">Schedule</h3>
+            <figure class="a-sa screen phone"><picture><source srcset="./assets/guide/schedule-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/schedule-light.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Nexgig Schedule screen: the November 2026 month calendar with a + button, booked days marked, and a Corporate Dinner booking listed for the selected day." /></picture></figure>
+            <div class="notes a-na">
+              <p class="notes-label" aria-hidden="true">Schedule</p>
+              <ul class="points" aria-labelledby="t-schedule">
+                <li><b>This is your monthly calendar.</b></li>
+                <li><b>Tap + to add your own bookings</b>, including private events or bookings at venues outside Nexgig.</li>
+                <li><b>This records the booking</b> and shows managers when you’re unavailable. Your private booking details stay private.</li>
+              </ul>
+            </div>
           </div>
           <div class="feature">
-            <h3>Connect your calendar</h3>
-            <figure class="screen phone"><picture><source srcset="./assets/guide/calendar-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/calendar-light.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Nexgig Connect your calendar screen, offering a Phone calendar or Google Calendar for your bookings." /></picture></figure>
-            <ul class="points">
-              <li><b>Phone Calendar works one way:</b> Send your bookings from Nexgig to your phone’s calendar.</li>
-              <li><b>Google Calendar works two ways:</b> Send your bookings from Nexgig to Google Calendar and sync your Google busy times into Nexgig so venues know your availability.</li>
-              <li><b>Venue managers</b> see only the imported unavailable times, never the details of your commitments.</li>
-            </ul>
+            <h3 id="t-calendar" class="a-hb">Connect your calendar</h3>
+            <figure class="a-sb screen phone"><picture><source srcset="./assets/guide/calendar-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/calendar-light.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Nexgig Connect your calendar screen, offering a Phone calendar or Google Calendar for your bookings." /></picture></figure>
+            <div class="notes a-nb">
+              <p class="notes-label" aria-hidden="true">Connect your calendar</p>
+              <ul class="points" aria-labelledby="t-calendar">
+                <li><b>Phone Calendar works one way:</b> Send your bookings from Nexgig to your phone’s calendar.</li>
+                <li><b>Google Calendar works two ways:</b> Send your bookings from Nexgig to Google Calendar and sync your Google busy times into Nexgig so venues know your availability.</li>
+                <li><b>Venue managers</b> see only the imported unavailable times, never the details of your commitments.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -233,25 +270,32 @@
     <!-- Billing · Create invoice -->
     <section class="part" id="billing" aria-labelledby="billing-title">
       <div class="wrap">
+        <hr class="divider" />
         <header>
           <h2 id="billing-title">Billing &amp; invoices</h2>
           <p class="sub">Know when to invoice, then choose how to send it.</p>
         </header>
-        <div class="cols">
+        <div class="cols pair pair-two">
           <div class="feature">
-            <h3>Billing</h3>
-            <figure class="screen phone"><picture><source srcset="./assets/guide/billing-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/billing-light.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Nexgig Billing screen for October: invoiced, completed fees and not invoiced yet totals, Palm House with 3 bookings to invoice, Velvet Lounge with its November cycle in progress, and a sent invoice to Rooftop Bar." /></picture></figure>
-            <ul class="points">
-              <li><b>Each venue has its own billing cycle.</b> When it ends, you’ll see how many bookings are ready to invoice. Tap the venue to create an invoice.</li>
-            </ul>
+            <h3 id="t-billing" class="a-ha">Billing</h3>
+            <figure class="a-sa screen phone"><picture><source srcset="./assets/guide/billing-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/billing-light.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Nexgig Billing screen for October: invoiced, completed fees and not invoiced yet totals, Palm House with 3 bookings to invoice, Velvet Lounge with its November cycle in progress, and a sent invoice to Rooftop Bar." /></picture></figure>
+            <div class="notes a-na">
+              <p class="notes-label" aria-hidden="true">Billing</p>
+              <ul class="points" aria-labelledby="t-billing">
+                <li><b>Each venue has its own billing cycle.</b> When it ends, you’ll see how many bookings are ready to invoice. Tap the venue to create an invoice.</li>
+              </ul>
+            </div>
           </div>
           <div class="feature">
-            <h3>Create invoice</h3>
-            <figure class="screen phone"><picture><source srcset="./assets/guide/create-invoice-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/create-invoice-light.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Nexgig invoice screen for Palm House, October 2026 billing cycle: three selected bookings with their fees, a total of AED 4,200, and Upload my own and Preview invoice buttons." /></picture></figure>
-            <ul class="points">
-              <li><b>Tap Preview invoice</b> to generate an invoice in Nexgig and review it.</li>
-              <li><b>Or choose Upload my own</b> to use your own tax invoice.</li>
-            </ul>
+            <h3 id="t-invoice" class="a-hb">Create invoice</h3>
+            <figure class="a-sb screen phone"><picture><source srcset="./assets/guide/create-invoice-dark.jpg" media="(prefers-color-scheme: dark)" /><img src="./assets/guide/create-invoice-light.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="Nexgig invoice screen for Palm House, October 2026 billing cycle: three selected bookings with their fees, a total of AED 4,200, and Upload my own and Preview invoice buttons." /></picture></figure>
+            <div class="notes a-nb">
+              <p class="notes-label" aria-hidden="true">Create invoice</p>
+              <ul class="points" aria-labelledby="t-invoice">
+                <li><b>Tap Preview invoice</b> to generate an invoice in Nexgig and review it.</li>
+                <li><b>Or choose Upload my own</b> to use your own tax invoice.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -260,6 +304,7 @@
     <!-- Artist Profile · Help -->
     <section class="part" id="profile" aria-labelledby="profile-title">
       <div class="wrap">
+        <hr class="divider" />
         <header>
           <h2 id="profile-title">Artist profile &amp; help</h2>
           <p class="sub">Keep your details current. Tell us how we can help.</p>
