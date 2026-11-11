@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="./favicon.png">
-<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" href="./favicon.png?v=20261106">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png?v=20261106">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#F8F9FA" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#191615" media="(prefers-color-scheme: dark)" />
 <title>Nexgig — Book, Play, Manage</title>
 <meta name="description" content="Nexgig brings venue managers and performing artists together around one clear booking workflow — organise schedules, confirm gigs, track fees and manage invoices in one place." />
 <meta property="og:title" content="Nexgig — Your artists. Your bookings. All in one place." />
 <meta property="og:description" content="Organise schedules, confirm gigs, track fees and manage invoices. Nexgig brings venue managers and performing artists together around one clear booking workflow." />
 <meta property="og:type" content="website" />
 <style>
-  @font-face{
-    font-family:'Clash Display';
-    src:url('./ClashDisplay-Bold.otf') format('opentype');
-    font-weight:700; font-display:swap;
-  }
   @font-face{
     font-family:'General Sans';
     src:url('./GeneralSans-Regular.otf') format('opentype');
@@ -32,28 +30,45 @@
     font-weight:700; font-display:swap;
   }
   :root{
-    --bg:#141010; --bg2:#1c1613; --bg3:#221a16;
-    --coral:#E2674A; --coral-deep:#c6503a;
-    /* Button coral: deeper so white text meets WCAG AA (white on #BE4B35 = 4.94:1; bright #E2674A was 3.35:1) */
-    --coral-btn:#BE4B35; --coral-btn-hover:#A83E28;
-    --danger:#F26D6D;
-    --cream:#F5F0EC; --wm-neutral:#F2F1EF; --muted:#9d9089;
-    --line:rgba(245,240,236,.10); --line2:rgba(245,240,236,.16);
+    color-scheme:light dark;
+    /* Current approved palette (Departments/Brand/Assets/Current Colour Guide, 11 Nov 2026).
+       Light by default; the dark block below follows the device setting on load and when it changes. */
+    --bg:#F8F9FA; --surface:#F0F1F2;
+    --text:#202124; --muted:#70757A; --border:#DDE0E3;
+    /* Essential body copy: light theme uses main text (the light secondary colour is below AA on these
+       backgrounds — documented palette caveat); dark theme keeps the approved secondary colour. */
+    --prose:#202124;
+    /* Essential text links: coral text is below 3:1 on the light surface, so light uses main text with a coral underline */
+    --link:#202124;
+    --coral:#F15A3A; --coral-btn:#F15A3A; --coral-btn-hover:#D24E32;
+    --danger:#EF4444;
+    --glow:rgba(241,90,58,.16); --shadow:rgba(32,33,36,.16); --hover:rgba(32,33,36,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#191615; --surface:#292524;
+      --text:#F4F0EB; --muted:#B6AEA7; --border:#403A37;
+      --prose:#B6AEA7;
+      --link:#F15A3A;
+      --danger:#F87171;
+      --glow:rgba(241,90,58,.22); --shadow:rgba(0,0,0,.5); --hover:rgba(244,240,235,.06);
+    }
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth;overflow-x:hidden}
   body{
-    background:var(--bg); color:var(--cream);
+    background:var(--bg); color:var(--text);
     font-family:'General Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
     line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
   a{color:inherit}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
-  /* wordmark — approved refined artwork (6 Nov 2026): white "Nex", coral #F15A3A "gig", dark-background variant.
-     Brand/Assets/Brand Assets/2026-11-06 Refined Identity/…/03 Logos/nexgig-wordmark-dark.svg, byte-identical copy.
+  /* wordmark — approved refined artwork (6 Nov 2026), coral #F15A3A "gig": light variant (ink "Nex") by default, dark variant (white "Nex") in dark mode.
+     Both are byte-identical copies from Brand/Assets/Brand Assets/2026-11-06 Refined Identity/…/03 Logos/.
      Height-driven, width auto so the 1383 × 425 aspect ratio is preserved; never below the 20px minimum. */
   .logo{display:inline-flex;align-items:center;text-decoration:none;line-height:0}
+  .logo picture{display:block}
   .logo img{display:block;height:28px;width:auto}
 
   /* buttons */
@@ -64,8 +79,8 @@
   .btn:hover{transform:translateY(-2px)}
   .btn-primary{background:var(--coral-btn);color:#fff}
   .btn-primary:hover{background:var(--coral-btn-hover)}
-  .btn-ghost{border-color:var(--line2);color:var(--cream);background:transparent}
-  .btn-ghost:hover{border-color:var(--cream)}
+  .btn-ghost{border-color:var(--border);color:var(--text);background:transparent}
+  .btn-ghost:hover{border-color:var(--text)}
   .btn-sm{padding:10px 18px;font-size:14.5px;border-radius:10px}
   a:focus-visible,.btn:focus-visible{outline:2px solid var(--coral);outline-offset:3px;border-radius:12px}
 
@@ -75,27 +90,27 @@
   nav .brand{font-size:24px}
   .navlinks{display:flex;align-items:center;gap:28px}
   .navlinks a{color:var(--muted);text-decoration:none;font-size:15px;transition:color .2s}
-  .navlinks a:hover{color:var(--cream)}
-  .navlinks .btn{color:#fff}
+  .navlinks a:hover{color:var(--text)}
+  .navlinks .btn{color:var(--text)}   /* header Sign in is an outline button: theme text colour, readable in light and dark */
   .navlinks a.btn{line-height:normal}   /* the header Sign in link: same height as the button it replaced */
 
   /* hero */
   .hero{position:relative;text-align:center;padding:56px 24px 40px}
   .glow{position:absolute;top:-160px;left:50%;transform:translateX(-50%);
     width:720px;height:640px;max-width:130vw;border-radius:50%;
-    background:radial-gradient(circle, rgba(226,103,74,.24) 0%, rgba(226,103,74,0) 62%);
+    background:radial-gradient(circle, var(--glow) 0%, transparent 62%);
     filter:blur(24px);pointer-events:none;z-index:0}
   .hero > *:not(.glow){position:relative;z-index:1}
   .eyebrow{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:22px}
   .hero h1{font-weight:700;
     font-size:clamp(38px,6.6vw,68px);line-height:1.05;letter-spacing:-.02em;
     max-width:15ch;margin:0 auto;text-wrap:balance}
-  .hero .sub{max-width:600px;margin:24px auto 0;color:var(--muted);font-size:clamp(16px,2vw,18.5px)}
+  .hero .sub{max-width:600px;margin:24px auto 0;color:var(--prose);font-size:clamp(16px,2vw,18.5px)}
   .cta{margin-top:36px;display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center}
-  .helper{margin-top:22px;color:var(--cream);font-size:15px;opacity:.9}
+  .helper{margin-top:22px;color:var(--text);font-size:15px;opacity:.9}
   .fallback{margin-top:8px;color:var(--muted);font-size:13.5px}
   .fallback a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
-  .fallback a:hover{color:var(--cream)}
+  .fallback a:hover{color:var(--text)}
   .store-note{font-size:13px;color:var(--muted)}
 
   /* sections */
@@ -104,47 +119,47 @@
   .block h2{font-weight:700;
     font-size:clamp(27px,3.7vw,39px);letter-spacing:-.015em;line-height:1.1;text-wrap:balance}
   .center{text-align:center}
-  .block .lead{color:var(--muted);max-width:620px;margin:12px auto 0;font-size:16.5px}
+  .block .lead{color:var(--prose);max-width:620px;margin:12px auto 0;font-size:16.5px}
   .center .lead{margin-inline:auto}
 
   /* product showcase */
   .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px}
   .shot{display:flex;flex-direction:column;align-items:center;text-align:center}
   .phone{width:100%;max-width:264px;aspect-ratio:560/1212;overflow:hidden;
-    border-radius:30px;border:1px solid var(--line2);background:#0c0a08;
-    box-shadow:0 24px 60px rgba(0,0,0,.5);}
+    border-radius:30px;border:1px solid var(--border);background:var(--surface);
+    box-shadow:0 24px 60px var(--shadow);}
   .phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
   .shot h3{font-size:18px;font-weight:600;margin:22px 0 6px;letter-spacing:-.005em}
-  .shot p{color:var(--muted);font-size:14.5px;max-width:30ch}
+  .shot p{color:var(--prose);font-size:14.5px;max-width:30ch}
 
   /* audience cards */
   /* Two cards share one grid so their rows (label · heading · intro · bullets · button) line up
      across both cards via subgrid — no per-card spacer heights. Reverts to normal flow on mobile. */
   .split{display:grid;grid-template-columns:1fr 1fr;column-gap:22px;row-gap:0;margin-top:14px;grid-template-rows:auto auto auto auto auto}
-  .card{background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:38px 34px;display:grid;grid-template-rows:subgrid;grid-row:1 / -1}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:38px 34px;display:grid;grid-template-rows:subgrid;grid-row:1 / -1}
   .card > *{align-self:start;min-width:0}
   .card .eyebrow{margin-bottom:16px}
   .card h3{font-weight:600;font-size:24px;letter-spacing:-.01em;line-height:1.14;margin-bottom:14px}
-  .card .cardsub{color:var(--muted);font-size:15.5px;margin-bottom:20px}
+  .card .cardsub{color:var(--prose);font-size:15.5px;margin-bottom:20px}
   .card ul{list-style:none;margin-bottom:22px}
-  .card li{position:relative;padding-left:26px;margin-bottom:12px;color:var(--cream);font-size:15.5px}
+  .card li{position:relative;padding-left:26px;margin-bottom:12px;color:var(--text);font-size:15.5px}
   .card li::before{content:'';position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--coral)}
   /* CTA row pinned to the card bottom so both cards' buttons line up; store-note sits beside the button */
   .cardcta{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
 
   /* how it works */
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
-  .step{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:26px 22px}
+  .step{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:26px 22px}
   .step .num{font-weight:700;font-size:15px;
     color:var(--coral);border:1.5px solid var(--coral);width:38px;height:38px;border-radius:50%;
     display:flex;align-items:center;justify-content:center;margin-bottom:18px}
   .step h3{font-size:17px;font-weight:600;margin-bottom:7px;letter-spacing:-.005em}
-  .step p{color:var(--muted);font-size:14.5px}
+  .step p{color:var(--prose);font-size:14.5px}
 
   /* why nexgig */
-  .why{background:var(--bg2);border:1px solid var(--line);border-radius:26px;padding:52px 44px;margin-top:8px}
+  .why{background:var(--surface);border:1px solid var(--border);border-radius:26px;padding:52px 44px;margin-top:8px}
   .why h2{margin-bottom:16px}
-  .why p{color:var(--muted);font-size:17px;max-width:66ch}
+  .why p{color:var(--prose);font-size:17px;max-width:66ch}
   .why p + p{margin-top:14px}
 
   /* closing */
@@ -152,12 +167,12 @@
   .closing .lead{margin-bottom:30px}
 
   /* footer */
-  footer{border-top:1px solid var(--line);padding:46px 24px 60px;margin-top:20px}
+  footer{border-top:1px solid var(--border);padding:46px 24px 60px;margin-top:20px}
   .foot{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
   .foot .brand img{height:26px}
   .foot .links{display:flex;gap:24px;flex-wrap:wrap}
   .foot a{color:var(--muted);text-decoration:none;font-size:14.5px;transition:color .2s}
-  .foot a:hover{color:var(--cream)}
+  .foot a:hover{color:var(--text)}
   .copy{width:100%;color:var(--muted);font-size:13px;margin-top:6px}
 
   /* ---- Request-a-demo modal ---- */
@@ -166,20 +181,20 @@
   .modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
   .modal-backdrop{position:absolute;inset:0;background:rgba(10,8,7,.72);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
   .modal-card{position:relative;z-index:1;width:100%;max-width:480px;max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);
-    overflow-y:auto;background:var(--bg2);border:1px solid var(--line2);border-radius:20px;padding:30px 28px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+    overflow-y:auto;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:30px 28px;box-shadow:0 30px 80px var(--shadow)}
   .modal-close{position:absolute;top:12px;right:12px;width:38px;height:38px;border:none;background:transparent;color:var(--muted);
     font-size:26px;line-height:1;cursor:pointer;border-radius:9px;transition:color .15s,background .15s}
-  .modal-close:hover{color:var(--cream);background:rgba(245,240,236,.06)}
+  .modal-close:hover{color:var(--text);background:var(--hover)}
   .modal-close:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
   .modal-title{font-weight:700;font-size:24px;letter-spacing:-.01em;margin-bottom:8px}
-  .modal-intro{color:var(--muted);font-size:15px;line-height:1.5;margin-bottom:22px;max-width:42ch}
+  .modal-intro{color:var(--prose);font-size:15px;line-height:1.5;margin-bottom:22px;max-width:42ch}
   #demoForm{display:flex;flex-direction:column;gap:15px}
   .fld{display:flex;flex-direction:column;gap:7px}
-  .fld label{font-size:13.5px;font-weight:600;color:var(--cream)}
+  .fld label{font-size:13.5px;font-weight:600;color:var(--text)}
   .fld .req{color:var(--coral)}
   .fld .opt{color:var(--muted);font-weight:400}
-  .fld input,.fld textarea{font-family:inherit;font-size:15px;color:var(--cream);background:var(--bg);
-    border:1px solid var(--line2);border-radius:11px;padding:12px 13px;width:100%;transition:border-color .15s}
+  .fld input,.fld textarea{font-family:inherit;font-size:15px;color:var(--text);background:var(--bg);
+    border:1px solid var(--border);border-radius:11px;padding:12px 13px;width:100%;transition:border-color .15s}
   .fld textarea{resize:vertical;min-height:82px;line-height:1.5}
   .fld input::placeholder,.fld textarea::placeholder{color:var(--muted)}
   .fld input:focus,.fld textarea:focus{outline:none;border-color:var(--coral)}
@@ -193,7 +208,7 @@
   #demoForm .btn[disabled]:hover{transform:none}
   .modal-fallback{font-size:13px;color:var(--muted);text-align:center;margin:2px 0 0}
   .modal-fallback a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
-  .modal-fallback a:hover{color:var(--cream)}
+  .modal-fallback a:hover{color:var(--text)}
   .modal-success{text-align:center;padding:12px 4px 4px}
   .modal-success .success-icon{width:62px;height:62px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;
     background:color-mix(in srgb, var(--coral) 16%, transparent);color:var(--coral);font-size:30px;font-weight:700}
@@ -221,7 +236,7 @@
 </head>
 <body>
   <nav>
-    <a class="brand logo" href="./index.html" aria-label="Nexgig home"><img src="./nexgig-wordmark.svg" alt="Nexgig" width="91" height="28" /></a>
+    <a class="brand logo" href="./index.html" aria-label="Nexgig home"><picture><source srcset="./nexgig-wordmark.svg" media="(prefers-color-scheme: dark)" /><img src="./nexgig-wordmark-light.svg" alt="Nexgig" width="91" height="28" /></picture></a>
     <div class="navlinks">
       <a class="navlink" href="#managers">For managers</a>
       <a class="navlink" href="#artists">For artists</a>
@@ -303,6 +318,7 @@
           <div class="cardcta">
             <a class="btn btn-primary" href="https://apps.apple.com/ae/app/nexgig/id6784020757">Download for iPhone</a>
             <span class="store-note">Android coming soon.</span>
+            <a class="btn btn-ghost" href="./artist-guide.html">Read the artist guide</a>
           </div>
         </div>
       </div>
@@ -360,12 +376,13 @@
 
   <footer>
     <div class="foot">
-      <a class="brand logo" href="./index.html" aria-label="Nexgig home"><img src="./nexgig-wordmark.svg" alt="Nexgig" width="91" height="28" /></a>
+      <a class="brand logo" href="./index.html" aria-label="Nexgig home"><picture><source srcset="./nexgig-wordmark.svg" media="(prefers-color-scheme: dark)" /><img src="./nexgig-wordmark-light.svg" alt="Nexgig" width="91" height="28" /></picture></a>
       <div class="links">
         <a href="https://nexgig.github.io/legal/privacy-policy.html">Privacy Policy</a>
         <a href="https://nexgig.github.io/legal/terms-of-service.html">Terms of Service</a>
         <a href="https://nexgig.github.io/legal/delete-account.html">Delete Account</a>
         <a href="./support.html">Support</a>
+        <a href="./artist-guide.html">Artist guide</a>
       </div>
       <div class="copy">© 2026 Nexgig. All rights reserved.</div>
     </div>
@@ -403,7 +420,7 @@
           <!-- honeypot: hidden from people; a filled value flags a bot -->
           <div class="hp" aria-hidden="true"><label>Website<input id="d-website" name="website" type="text" tabindex="-1" autocomplete="off" /></label></div>
           <p class="form-error" id="demoFormError" role="alert" hidden></p>
-          <p class="form-note" style="font-size:13px;color:var(--muted);line-height:1.5;margin:2px 0 14px;">We’ll use your details to review your request and contact you about onboarding. Submitting this form doesn’t create an account or guarantee access, and won’t subscribe you to marketing emails. See our <a href="https://nexgig.github.io/legal/privacy-policy.html" target="_blank" rel="noopener" style="color:var(--coral);text-decoration:underline;">Privacy Policy</a>.</p>
+          <p class="form-note" style="font-size:13px;color:var(--prose);line-height:1.5;margin:2px 0 14px;">We’ll use your details to review your request and contact you about onboarding. Submitting this form doesn’t create an account or guarantee access, and won’t subscribe you to marketing emails. See our <a href="https://nexgig.github.io/legal/privacy-policy.html" target="_blank" rel="noopener" style="color:var(--link);text-decoration:underline;text-decoration-color:var(--coral);">Privacy Policy</a>.</p>
           <button class="btn btn-primary" type="submit" id="demoSubmit">Send request</button>
           <p class="modal-fallback">Prefer email? <a href="mailto:admin@nexgigapp.com?subject=Nexgig%20access%20request">admin@nexgigapp.com</a></p>
         </form>

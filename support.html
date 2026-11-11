@@ -1,47 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="./favicon.png">
-<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" href="./favicon.png?v=20261106">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png?v=20261106">
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#F8F9FA" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#191615" media="(prefers-color-scheme: dark)" />
 <title>Nexgig — Support</title>
 <meta name="description" content="Get help with Nexgig. Contact our team for support with bookings, accounts and invoices." />
 <style>
-  @font-face{font-family:'Clash Display';src:url('./ClashDisplay-Bold.otf') format('opentype');font-weight:700;font-display:swap}
   @font-face{font-family:'General Sans';src:url('./GeneralSans-Regular.otf') format('opentype');font-weight:400;font-display:swap}
   @font-face{font-family:'General Sans';src:url('./GeneralSans-Semibold.otf') format('opentype');font-weight:600;font-display:swap}
   @font-face{font-family:'General Sans';src:url('./GeneralSans-Bold.otf') format('opentype');font-weight:700;font-display:swap}
-  :root{--bg:#141010;--bg2:#1c1613;--coral:#E2674A;--cream:#F5F0EC;--wm-neutral:#F2F1EF;--muted:#9d9089;--line:rgba(245,240,236,.10)}
+  :root{
+    color-scheme:light dark;
+    /* Current approved palette (Departments/Brand/Assets/Current Colour Guide, 11 Nov 2026).
+       Light by default; the dark block below follows the device setting on load and when it changes. */
+    --bg:#F8F9FA; --surface:#F0F1F2;
+    --text:#202124; --muted:#70757A; --border:#DDE0E3;
+    /* Essential body copy: light theme uses main text (the light secondary colour is below AA on these
+       backgrounds — documented palette caveat); dark theme keeps the approved secondary colour. */
+    --prose:#202124;
+    /* Essential text links: coral text is below 3:1 on the light surface, so light uses main text with a coral underline */
+    --link:#202124;
+    --coral:#F15A3A; --coral-btn:#F15A3A; --coral-btn-hover:#D24E32;
+    --danger:#EF4444;
+    --glow:rgba(241,90,58,.16); --shadow:rgba(32,33,36,.16); --hover:rgba(32,33,36,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#191615; --surface:#292524;
+      --text:#F4F0EB; --muted:#B6AEA7; --border:#403A37;
+      --prose:#B6AEA7;
+      --link:#F15A3A;
+      --danger:#F87171;
+      --glow:rgba(241,90,58,.22); --shadow:rgba(0,0,0,.5); --hover:rgba(244,240,235,.06);
+    }
+  }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--bg);color:var(--cream);font-family:'General Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-  /* wordmark — approved refined artwork (6 Nov 2026), dark-background variant; aspect ratio preserved */
+  body{background:var(--bg);color:var(--text);font-family:'General Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  /* wordmark — approved refined artwork (6 Nov 2026): light variant (ink "Nex") by default, dark variant (white "Nex") in dark mode; aspect ratio preserved */
   .logo{display:inline-flex;align-items:center;text-decoration:none;line-height:0}
+  .logo picture{display:block}
   .logo img{display:block;height:28px;width:auto}
   a:focus-visible{outline:2px solid var(--coral);outline-offset:3px;border-radius:6px}
   nav{display:flex;align-items:center;justify-content:space-between;padding:26px 24px;max-width:840px;margin:0 auto}
   nav .brand{font-size:24px}
-  nav a.home{color:var(--muted);text-decoration:none;font-size:15px}nav a.home:hover{color:var(--cream)}
+  nav a.home{color:var(--muted);text-decoration:none;font-size:15px}nav a.home:hover{color:var(--text)}
   .wrap{max-width:720px;margin:0 auto;padding:40px 24px 80px}
   h1{font-weight:700;font-size:clamp(38px,7vw,58px);letter-spacing:-.02em;margin-bottom:10px}
-  .lead{color:var(--muted);font-size:18px;margin-bottom:40px}
-  .panel{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:30px;margin-bottom:20px}
+  .lead{color:var(--prose);font-size:18px;margin-bottom:40px}
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:30px;margin-bottom:20px}
   .panel h2{font-weight:700;font-size:20px;margin-bottom:8px;letter-spacing:-.01em}
-  .panel p{color:var(--muted);font-size:15.5px}
-  .panel a.email{color:var(--coral);text-decoration:none;font-weight:600;display:inline-block;margin-top:6px;font-size:20px;overflow-wrap:anywhere}
+  .panel p{color:var(--prose);font-size:15.5px}
+  .panel a.email{color:var(--link);text-decoration:underline;text-decoration-color:var(--coral);text-decoration-thickness:2px;text-underline-offset:4px;font-weight:600;display:inline-block;margin-top:6px;font-size:20px;overflow-wrap:anywhere}
   .panel a.email:hover{text-decoration:underline}
   .panel p.note{margin-top:14px;font-size:15px}
-  .panel a.inline{color:var(--coral);text-decoration:underline}
+  .panel a.inline{color:var(--link);text-decoration:underline;text-decoration-color:var(--coral)}
   .operator{color:var(--muted);font-size:14.5px;margin-top:30px}
-  footer{border-top:1px solid var(--line);padding:36px 24px;margin-top:30px;text-align:center}
+  footer{border-top:1px solid var(--border);padding:36px 24px;margin-top:30px;text-align:center}
   footer .links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
-  footer a{color:var(--muted);text-decoration:none;font-size:14.5px}footer a:hover{color:var(--cream)}
+  footer a{color:var(--muted);text-decoration:none;font-size:14.5px}footer a:hover{color:var(--text)}
   footer .copy{color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
   <nav>
-    <a class="brand logo" href="./index.html" aria-label="Nexgig home"><img src="./nexgig-wordmark.svg" alt="Nexgig" width="91" height="28" /></a>
+    <a class="brand logo" href="./index.html" aria-label="Nexgig home"><picture><source srcset="./nexgig-wordmark.svg" media="(prefers-color-scheme: dark)" /><img src="./nexgig-wordmark-light.svg" alt="Nexgig" width="91" height="28" /></picture></a>
     <a class="home" href="./index.html">Home</a>
   </nav>
   <div class="wrap">
@@ -66,6 +93,7 @@
       <a href="https://nexgig.github.io/legal/terms-of-service.html">Terms of Service</a>
       <a href="https://nexgig.github.io/legal/delete-account.html">Delete Account</a>
       <a href="./support.html" aria-current="page">Support</a>
+      <a href="./artist-guide.html">Artist guide</a>
     </div>
     <div class="copy">© 2026 Nexgig. All rights reserved.</div>
   </footer>
