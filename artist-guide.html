@@ -79,7 +79,7 @@
   ul.points li::before{content:'';position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--coral)}
   .start ul.points{margin-top:14px}
   .start ul.points li b{color:var(--text)}   /* Getting started: bold tab labels in main text colour */
-  ul.points li .lead{color:var(--muted)}      /* other bullet openings: regular weight, theme secondary gray */
+  ul.points li .lead{color:var(--prose)}      /* bullet openings: regular weight, same colour as the bullet text (light + dark) */
 
   /* guide sections */
   section.part{padding:48px 0 8px;scroll-margin-top:12px}
@@ -115,6 +115,11 @@
   .closing{padding:72px 0 24px;text-align:center}
   .closing .farewell{font-size:clamp(19px,2.4vw,22px);color:var(--text);max-width:34ch;margin:0 auto 14px}
   .closing .signoff{font-size:clamp(24px,3.2vw,30px);font-weight:700;color:var(--coral);letter-spacing:-.01em}
+  /* two compact store links under the sign-off; platform shown by icon, full name for assistive tech */
+  .downloads{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:22px}
+  .downloads a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text);text-decoration:none;font-size:15px;font-weight:600;line-height:1}
+  .downloads a:hover{border-color:var(--text)}
+  .downloads svg{width:18px;height:18px;flex:none;fill:currentColor}
 
   /* footer */
   footer{border-top:1px solid var(--border);padding:40px 24px 56px;margin-top:56px}
@@ -136,6 +141,8 @@
   }
   @media(max-width:420px){
     p.body, ul.points li, .intro p.body, .sub{font-size:17px}
+    .downloads{gap:10px}
+    .downloads a{padding:10px 14px}   /* keeps both download links on one row at 320px */
     figure.phone{max-width:280px}
   }
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -271,6 +278,10 @@
       <div class="wrap">
         <p class="farewell">We’re glad you’re here. Here’s to new opportunities and great connections.</p>
         <p class="signoff">Free for artists. Get on board.</p>
+        <div class="downloads">
+          <a href="https://apps.apple.com/ae/app/nexgig/id6784020757" aria-label="Download for iPhone"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span>Download</span></a>
+          <a href="https://play.google.com/store/apps/details?id=com.nexgig.app" aria-label="Download for Android"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084.0328-.1673.0671-.25.1016L5.3301 5.5547a.4547.4547 0 0 0-.6218-.1702.4547.4547 0 0 0-.1679.6218l1.9688 3.4004C4.1225 11.1265 2.2696 13.7964 2 16.9707h20c-.2696-3.1743-2.1226-5.8442-4.5098-7.5645.0018-.0011.0021-.0028.0039-.0039l1.9707-3.4023a.4547.4547 0 0 0-.168-.6218.4547.4547 0 0 0-.6181.1704zm-11.0879 7.2441a.9038.9038 0 0 1 .9023.9024.9038.9038 0 0 1-.9023.9023.9038.9038 0 0 1-.9043-.9023.9038.9038 0 0 1 .9043-.9024zm9.2959 0a.9038.9038 0 0 1 .9043.9024.9038.9038 0 0 1-.9043.9023.9038.9038 0 0 1-.9023-.9023.9038.9038 0 0 1 .9023-.9024z"/></svg><span>Download</span></a>
+        </div>
       </div>
     </section>
   </main>
